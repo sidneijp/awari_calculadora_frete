@@ -70,4 +70,13 @@ class ViaCep {
     }
 }
 
-module.exports = { CorreiosCalculador, ViaCep }
+async function calculaFrete(cep) {
+    return await CorreiosCalculador.calcPrecoPrazo(cep)
+}
+
+async function buscaCep(cep) {
+    return await ViaCep.buscaEndereco(cep)
+}
+
+
+module.exports = { calculaFrete, buscaCep }
