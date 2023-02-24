@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "bec860ba-391d-4a5b-a0f8-0ae8a2855a45",
+		"name": "Semana 4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Calcula Frete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/frete/?cidade=Osasco&estado=SP",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"frete",
+						""
+					],
+					"query": [
+						{
+							"key": "cidade",
+							"value": "Osasco"
+						},
+						{
+							"key": "estado",
+							"value": "SP"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcula Prazo e Preço",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/frete/02987123/",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"frete",
+						"02987123",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Endereco pelo CEP",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/endereco/02987123/",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"endereco",
+						"02987123",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

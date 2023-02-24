@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "2a4e16c1-c065-4824-bd3d-87700bf3d0c9",
+		"name": "Semana 8",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastro",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nomeUsuario\": \"sidnelson\",\r\n    \"senha\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/autenticacao/cadastro/",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"autenticacao",
+						"cadastro",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entrar",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nomeUsuario\": \"sidnelson\",\r\n    \"senha\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/autenticacao/entrar/",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"autenticacao",
+						"entrar",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cria Item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Pasta\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/items/",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"items",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/items/",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"items",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtem Item",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/items/{{item_id}}/",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"items",
+						"{{item_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiza Item",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Pasta\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/items/{{item_id}}/",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"items",
+						"{{item_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Item",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/items/{{item_id}}/",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"items",
+						"{{item_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcula Prazo e Preço",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/frete/{{cep}}/",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"frete",
+						"{{cep}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Endereco pelo CEP",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/endereco/{{cep}}/",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"endereco",
+						"{{cep}}",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "6e44b699-e275-480e-944e-e61b78a9875e",
+		"name": "Semana 6",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Lista Items",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/items/",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"items",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cria Item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Sidnei\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocolo}}://{{host}}:{{porta}}/items/",
+					"protocol": "{{protocolo}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"items",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
