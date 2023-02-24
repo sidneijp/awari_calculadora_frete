@@ -32,6 +32,7 @@ class CorreiosCalculador {
             response = await axios.get(url, { params: query_params })
         } catch (error) {
             console.error(error);
+            return {}
         }
         const parser = new XMLParser()
         const xmlData = parser.parse(response.data)

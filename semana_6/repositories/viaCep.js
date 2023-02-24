@@ -3,7 +3,7 @@ const { default: axios } = require("axios")
 class ViaCep {
     static urlBase = `https://viacep.com.br/ws`
 
-    static async buscaEndereco(cep_destino, callback) {
+    static async buscaEndereco(cep_destino) {
         /*
         Ex. de resposta:
         {
@@ -25,6 +25,7 @@ class ViaCep {
             response = await axios.get(url)
         } catch (error) {
             console.error(error);
+            return {}
         }
         return response.data
     }

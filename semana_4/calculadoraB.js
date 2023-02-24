@@ -1,14 +1,15 @@
+// Node.js: Core Modules - Integração com Terceiros
+
 const http = require('http');
 const https = require('https');
-const { XMLParser, XMLValidator } = require("fast-xml-parser");
+const { XMLParser } = require("fast-xml-parser");
 
 const hostname = '127.0.0.1';
 const port = 3000;
 const CEP_ORIGEM = process.env.CEP_ORIGEM || "02987123" // "02987123" é um CEP aleatório obtido no Google pra poder testar.
 
 const server = http.createServer((req, res) => {
-    console.log(req)
-    const split_path = req.url.split("/").filter(x => x)
+    const split_path = decodeURI(req.url).split("/").filter(x => x)
     const recurso = split_path[0]
     const cep = split_path[1]
     switch (recurso) {
@@ -16,7 +17,7 @@ const server = http.createServer((req, res) => {
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
             calculaEntrega(cep, responseData => res.end(JSON.stringify(responseData)))
-            break;
+            break
         case "endereco":
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');

@@ -1,4 +1,36 @@
-// 04 Node.js: Fundamentos - Melhorando os Cálculos
+// 05 Node.js: Core Modules - Construção da API
+
+const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+    const [rota, query_string] = decodeURI(req.url).split("?")
+    const query_params = query_string ? query_string.split("&") : []
+    const params = {}
+    for (const query_param of query_params) {
+        const [prop, valor] = query_param.split("=")
+        params[prop] = valor
+    }
+    if (req.method == "GET" && rota == "/frete/") {
+        const { cidade, estado } = params
+        if (!estado) {
+            res.statusCode = 400; // Bad request
+            res.setHeader('Content-Type', 'application/json');
+            return res.end(JSON.stringify({ detail: 'Parâmetro "estado" é obrigatório.' }))
+        }
+        const valor = calculaFrete(cidade, estado)
+        const payload = { valor }
+        res.statusCode = 200; // Ok
+        res.setHeader('Content-Type', 'application/json');
+        return res.end(JSON.stringify(payload))
+    } else {
+        res.statusCode = 404;  // Not Found
+        res.setHeader('Content-Type', 'text/plain');
+        res.end('Not Found');
+    }
+});
 
 const TABELA_PRECOS = [
     {
@@ -69,24 +101,6 @@ function calculaFrete(cidade, sigla_estado) {
     return valor
 }
 
-function comparaPorProp(a, b, prop) {
-    if (a[prop] > b[prop])
-        return 1
-    if (b[prop] > a[prop])
-        return - 1
-    return 0
-}
-
-
-const cidade = "qualquer outra cidade"
-const reaisFormatter = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, style: "currency", currency: "BRL", })
-for (const regiao of TABELA_PRECOS) {
-    console.log(`# Região ${regiao.regiao}`)
-    const estados = regiao.estados
-    estados.sort((a, b) => comparaPorProp(a, b, "sigla"))
-    for (const estado of estados) {
-        const valor = calculaFrete(cidade, estado.sigla)
-        console.log(`- Frete p/ ${estado.sigla} é de ${reaisFormatter.format(valor)}`)
-    }
-    console.log("\n")
-}
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+});

@@ -32,6 +32,7 @@ class CorreiosCalculador {
             response = await axios.get(url, { params: query_params })
         } catch (error) {
             console.error(error);
+            return {}
         }
         const parser = new XMLParser()
         const xmlData = parser.parse(response.data)
@@ -43,7 +44,7 @@ class CorreiosCalculador {
 class ViaCep {
     static urlBase = `https://viacep.com.br/ws`
 
-    static async buscaEndereco(cep_destino, callback) {
+    static async buscaEndereco(cep_destino) {
         /*
         Ex. de resposta:
         {
@@ -65,6 +66,7 @@ class ViaCep {
             response = await axios.get(url)
         } catch (error) {
             console.error(error);
+            return {}
         }
         return response.data
     }
