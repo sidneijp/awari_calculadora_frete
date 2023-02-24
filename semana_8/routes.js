@@ -1,3 +1,4 @@
+// arquivos de rotas principal
 const express = require('express')
 const controllers = require("./controllers")
 
